@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #050a1a, #000000);
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #0d1b3a, #000000);
+            padding: 25px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 480px;
+            border: 2px solid rgba(0, 153, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 153, 255, 0.3);
+            text-align: center;
+            transition: 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            box-shadow: 0 0 30px #008cff;
+            border-color: #00b7ff;
+        }
+
+        h1 {
+            color: #00c3ff;
+            text-shadow: 0 0 12px #00c3ff;
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(0, 153, 255, 0.4);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-top: 10px;
+            display: block;
+            font-size: 15px;
+            text-align: left;
+            color: #9be4ff;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: #081020;
+            color: white;
+            border: 1px solid #00c3ff;
+            margin-top: 5px;
+            box-shadow: 0 0 10px rgba(0, 153, 255, 0.4);
+        }
+
+        select:focus {
+            outline: none;
+            box-shadow: 0 0 15px #00cfff;
+            border-color: #00cfff;
+        }
+
+        .btn-whatsapp {
+            width: 100%;
+            margin-top: 25px;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            background: #00ff88;
+            color: #000;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 0 10px #00ff88;
+        }
+
+        .btn-whatsapp:hover {
+            background: #00ff9d;
+            box-shadow: 0 0 20px #00ff9d;
+        }
+
+        .btn-voltar {
+            color: #00c3ff;
+            display: block;
+            margin-top: 15px;
+            text-decoration: none;
+        }
+
+        .btn-voltar:hover {
+            color: #00e1ff;
+            text-shadow: 0 0 10px #00e1ff;
+        }
+    </style>
+
+    <script>
+        function carregarHorarios() {
+            const dataSelecionada = document.getElementById("data").value;
+            if (!dataSelecionada) return;
+
+            fetch(`/horarios?data=${dataSelecionada}`)
+                .then(res => res.json())
+                .then(json => {
+                    const horarios = json.horarios;
+                    let select = document.getElementById("horario");
+                    select.innerHTML = "";
+
+                    horarios.forEach(h => {
+                        let opt = document.createElement("option");
+                        opt.value = h;
+                        opt.innerHTML = h;
+                        select.appendChild(opt);
+                    });
+                });
+        }
+
+        function enviarWhatsApp() {
+            const servico = "{{ servico }}";
+            const veiculo = "{{ veiculo }}";
+            const extra_nome = "{{ extra_nome }}";
+            const extra_valor = "{{ extra_valor }}";
+            const preco_final = "{{ preco_final }}";
+
+            const data = document.getElementById("data").value;
+            const horario = document.getElementById("horario").value;
+
+            let extrasMsg = "";
+            if (extra_nome && extra_nome !== "Nenhum") {
+                extrasMsg = `%0A• Extra: ${extra_nome} (+R$ ${extra_valor})`;
+            }
+
+            const mensagem =
+                `Olá! Quero confirmar o agendamento:%0A` +
+                `• Serviço: ${servico}%0A` +
+                `• Veículo: ${veiculo}%0A` +
+                extrasMsg +
+                `%0A• Valor Final: R$ ${preco_final}%0A` +
+                `• Data: ${data}%0A` +
+                `• Horário: ${horario}`;
+
+            const link = `https://wa.me/5551999522076?text=${mensagem}`;
+            window.location.href = link;
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Confirmar Agendamento</h1>
+
+    <div class="info-box">
+        <p><b>Serviço:</b> {{ servico }}</p>
+        <p><b>Veículo:</b> {{ veiculo }}</p>
+
+        {% if extra_nome %}
+            <p><b>Extra:</b> {{ extra_nome }} (R$ {{ extra_valor }})</p>
+        {% endif %}
+
+        <p><b>Valor Total:</b> R$ {{ preco_final }}</p>
+    </div>
+
+    <label>Escolha a Data:</label>
+    <select id="data" onchange="carregarHorarios()">
+        <option value="">Selecione...</option>
+        {% for d in datas %}
+            <option value="{{ d }}">{{ d }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Escolha o Horário:</label>
+    <select id="horario">
+        <option>Selecione a data primeiro...</option>
+    </select>
+
+    <button class="btn-whatsapp" onclick="enviarWhatsApp()">Confirmar no WhatsApp</button>
+
+    <a class="btn-voltar" href="/servicos">⬅ Voltar</a>
+</div>
+
+</body>
+</html>

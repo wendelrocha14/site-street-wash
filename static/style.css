@@ -1,0 +1,262 @@
+/* ======= FONTE E RESET ======= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #02121E, #0A3D62, #081F2F);
+    color: rgb(255, 255, 255);
+}
+
+/* ======= HEADER ======= */
+.header {
+    width: 100%;
+    padding: 20px 40px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 170px;
+    height: auto;
+    margin-left: 0;
+}
+
+.logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo-text {
+    color: #4DD2FF;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* MENU */
+.menu a {
+    margin-left: 30px;
+    color: #E6F7FF;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.menu a:hover {
+    color: #4DD2FF;
+}
+
+/* ======= HERO ======= */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.hero h1 span {
+    color: #4DD2FF;
+}
+
+.hero p {
+    font-size: 18px;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+/* BOTÕES */
+.hero-buttons {
+    margin-top: 40px;
+}
+
+.btn-primary {
+    background: #4DD2FF;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(77,210,255,0.4);
+    transition: 0.3s;
+    margin-right: 20px;
+}
+
+.btn-primary:hover {
+    background: #7EE6FF;
+    transform: scale(1.05);
+}
+
+.btn-outline {
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #4DD2FF;
+    text-decoration: none;
+    border: 2px solid #4DD2FF;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: rgba(77,210,255,0.1);
+    transform: scale(1.05);
+}
+
+/* ========================= */
+/*     SEÇÃO SERVIÇOS       */
+/* ========================= */
+
+.servicos-home {
+    padding: 60px 0;
+    background: #000;
+    color: #fff;
+    text-align: center;
+}
+
+.titulo-servicos {
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #4DD2FF;
+}
+
+/* GRID DOS CARDS */
+.cards-servicos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* CARD */
+.card {
+    background: #2a2a2a;
+    padding: 30px;
+    width: 320px;
+    border-radius: 20px;
+    text-align: left;
+
+    /* Azul neon */
+    box-shadow: 0px 0px 15px rgba(0, 170, 255, 0.25);
+    border-top: 4px solid #00aaff;
+
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 0px 25px rgba(0, 170, 255, 0.45);
+}
+
+/* ÍCONE */
+.card-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+/* TÍTULO */
+.card h2 {
+    margin: 10px 0 5px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background: rgba(0, 102, 255, 0.9);
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+/* PREÇO */
+.preco {
+    color: #00aaff;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* LISTA */
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.card ul li {
+    margin: 8px 0;
+    font-size: 15px;
+    color: #d5e8ff;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 8px;
+}
+
+/* CHECK AZUL */
+.card ul li::before {
+    content: "✔";
+    color: #00aaff;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+/* BOTÃO */
+.btn-card {
+    display: block;
+    background: #00aaff;
+    color: #000;
+    padding: 12px;
+    text-align: center;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease;
+    box-shadow: 0px 0px 12px rgba(0, 170, 255, 0.4);
+}
+
+.btn-card:hover {
+    background: #0090dd;
+    box-shadow: 0px 0px 20px rgba(0, 170, 255, 0.6);
+}
+
+/* ====== FRASE AO LADO/ABAIXO DA LOGO ====== */
+.top-frase {
+    color: #4DD2FF;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+
+    /* Glow suave premium */
+    text-shadow: 
+        0 0 8px rgba(77,210,255,0.6),
+        0 0 12px rgba(0,150,255,0.4);
+
+    animation: glowPulse 2.5s infinite alternate;
+}
+
+/* Animação leve de brilho (não atrapalha) */
+@keyframes glowPulse {
+    0% {
+        text-shadow: 
+            0 0 6px rgba(77,210,255,0.5),
+            0 0 12px rgba(0,150,255,0.3);
+    }
+    100% {
+        text-shadow: 
+            0 0 12px rgba(77,210,255,0.8),
+            0 0 18px rgba(0,150,255,0.5);
+    }
+}
+
+.logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px; /* Espaço entre logo e frase */
+}

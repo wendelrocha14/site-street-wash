@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipo de Veículo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000814, #001d3d);
+            font-family: "Poppins", sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 25px;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 540px;
+            background: rgba(0,0,0,0.65);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 195, 255, 0.25);
+            box-shadow: 0 0 15px rgba(0,195,255,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #00c3ff;
+            text-shadow: 0 0 10px #00c3ff;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #9be4ff;
+        }
+
+        .item {
+            background: #001530;
+            padding: 12px;
+            border-radius: 10px;
+            margin: 7px 0;
+            border: 1px solid rgba(0,195,255,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .item:hover {
+            box-shadow: 0 0 12px #00e1ff;
+            border-color: #00e1ff;
+        }
+
+        input[type="radio"] {
+            transform: scale(1.3);
+        }
+
+        .btn {
+            margin-top: 25px;
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            background: #00d5ff;
+            box-shadow: 0 0 10px #00d5ff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #00e1ff;
+            box-shadow: 0 0 18px #00e1ff;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 15px;
+            color: #00baff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Escolha o Tipo de Veículo</h1>
+
+    <form action="/agendar" method="GET">
+
+        <input type="hidden" name="servico" value="{{ servico }}">
+
+        <!-- TIPOS DE VEÍCULO -->
+        <p class="section-title">Tipo de Veículo (obrigatório):</p>
+
+        <label class="item">
+            Hatch
+            <input type="radio" name="veiculo" value="Hatch" required>
+        </label>
+
+        <label class="item">
+            Sedan
+            <input type="radio" name="veiculo" value="Sedan" required>
+        </label>
+
+        <label class="item">
+            SUV
+            <input type="radio" name="veiculo" value="SUV" required>
+        </label>
+
+        <label class="item">
+            Caminhonete
+            <input type="radio" name="veiculo" value="Caminhonete" required>
+        </label>
+
+        <hr style="border-color: rgba(0,195,255,0.25); margin:20px 0;">
+
+        <!-- SERVIÇOS EXTRAS -->
+        <p class="section-title">Serviços Extras (opcional):</p>
+
+        <label class="item">
+            Removedor de Piche — R$ 10
+            <input type="radio" name="extra" value="Removedor de Piche">
+        </label>
+
+        <label class="item">
+            Cera Líquida Premium — R$ 50
+            <input type="radio" name="extra" value="Cera Líquida Premium">
+        </label>
+
+        <label class="item">
+            Nenhum extra
+            <input type="radio" name="extra" value="Nenhum" checked>
+        </label>
+
+        <button class="btn" type="submit">Continuar</button>
+
+    </form>
+
+    <a href="/servicos" class="back">⬅ Voltar</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreetWash</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo-area">
+            <img src="{{ url_for('static', filename='logo.jpeg') }}" class="logo">
+
+            <!-- FRASE DESTACADA AO LADO OU ABAIXO DA LOGO -->
+            <h2 class="top-frase">Seu carro limpo no conforto da sua casa.</h2>
+        </div>
+    </header>
+
+    <!-- HERO (texto ajustado para manter o estilo, mas mais clean) -->
+    <section class="hero">
+        <h1>Qualidade, praticidade e cuidado com seu carro.</h1>
+        <p>Atendimento profissional em Nova Hartz e região.</p>
+
+        <div class="hero-buttons">
+            <a href="/agendar" class="btn-primary">📅 Agendar Lavagem</a>
+            <a href="#servicos" class="btn-outline">🔧 Ver Serviços</a>
+        </div>
+    </section>
+
+    <!-- ============================= -->
+    <!--        SERVIÇOS DA HOME       -->
+    <!-- ============================= -->
+    <section class="servicos-home" id="servicos">
+        <h1 class="titulo-servicos">Serviços Disponíveis</h1>
+
+        <div class="cards-servicos">
+
+            <!-- CARD 1 -->
+            <div class="card">
+                <div class="card-icon">💧</div>
+                <h2>Lavagem Manutenção</h2>
+                <p class="preco">R$ 60</p>
+
+                <ul>
+                    <li>✔ Lavagem externa completa</li>
+                    <li>✔ Aspiração</li>
+                    <li>✔ Secagem com microfibra</li>
+                    <li>✔ Limpeza dos vidros</li>
+                    <li>✔ Pneu brilhante</li>
+                    <li>✔ Duração: 30-45 min</li>
+                </ul>
+
+                <a href="/agendar" class="btn-card">Agendar Agora</a>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="card">
+                <div class="card-icon">✨</div>
+                <h2>Lavagem Detalhada Premium</h2>
+                <p class="preco">R$ 70</p>
+
+                <ul>
+                    <li>✔ Lavagem técnica premium</li>
+                    <li>✔ Detalhamento com pincel</li>
+                    <li>✔ Higienização leve dos bancos</li>
+                    <li>✔ Descontaminação</li>
+                    <li>✔ Limpeza detalhada de rodas</li>
+                    <li>✔ Proteção UV no painel</li>
+                    <li>✔ Duração: 60-90 min</li>
+                </ul>
+
+                <a href="/agendar" class="btn-card">Agendar Agora</a>
+            </div>
+
+            <!-- CARD 3 (SERVIÇOS EXTRAS — MANTIDO DE FORMA CLEAN) -->
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h2>Serviços Extras</h2>
+                <p class="preco">R$ 10 - R$ 50</p>
+
+                <ul>
+                    <li>✔ Removedor de piche</li>
+                    <li>✔ Cera líquida premium</li>
+                    <li>✔ Polimentos leves</li>
+                    <li>✔ Duração: 45-60 min</li>
+                </ul>
+
+                <a href="/agendar" class="btn-card">Agendar Agora</a>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
