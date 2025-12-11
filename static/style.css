@@ -260,3 +260,111 @@ body {
     align-items: flex-start;
     gap: 4px; /* Espaço entre logo e frase */
 } 
+
+/* ===================== */
+/* BOTÕES ESTILO BOLHA iOS */
+/* ===================== */
+.btn-primary, .btn-outline {
+    border-radius: 50px !important;
+    padding: 16px 28px !important;
+    font-size: 18px;
+    font-weight: 600;
+    backdrop-filter: blur(12px);
+    box-shadow: 
+        4px 4px 12px rgba(0,0,0,0.3),
+        -4px -4px 12px rgba(255,255,255,0.15);
+    transition: 0.25s ease;
+}
+
+/* Botão principal com bolha */
+.btn-primary {
+    background: rgba(77,210,255,0.55) !important;
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+.btn-primary:hover {
+    transform: scale(1.07);
+    background: rgba(77,210,255,0.75) !important;
+}
+
+/* Botão outline estilo bolha */
+.btn-outline {
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(77,210,255,0.6) !important;
+}
+
+.btn-outline:hover {
+    transform: scale(1.07);
+    background: rgba(77,210,255,0.15);
+}
+
+/* ===================== */
+/* CARDS ESTILO BOLHA iOS */
+/* ===================== */
+.card {
+    background: rgba(25,25,25,0.55) !important;
+    backdrop-filter: blur(14px);
+    border-radius: 30px !important;
+    box-shadow: 
+        6px 6px 18px rgba(0,0,0,0.45),
+        -6px -6px 18px rgba(255,255,255,0.1) !important;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: 0.35s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 
+        8px 8px 22px rgba(0,0,0,0.5),
+        -8px -8px 22px rgba(255,255,255,0.16) !important;
+}
+
+/* ===================== */
+/* BOTÃO DENTRO DO CARD */
+/* ===================== */
+.btn-card {
+    background: rgba(77,210,255,0.5) !important;
+    border-radius: 40px !important;
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    box-shadow:
+        4px 4px 12px rgba(0,0,0,0.35),
+        -4px -4px 12px rgba(255,255,255,0.15);
+    transition: .3s;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    padding: 12px;
+}
+
+.btn-card:hover {
+    transform: scale(1.09);
+    background: rgba(77,210,255,0.7) !important;
+}
+
+/* ===================== */
+/* BOTÃO WHATSAPP (opcional) */
+/* ===================== */
+.btn-whats {
+    background: rgba(37,211,102,0.6);
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow:
+        4px 4px 12px rgba(0,0,0,0.35),
+        -4px -4px 12px rgba(255,255,255,0.15);
+    transition: .3s;
+}
+
+.btn-whats:hover {
+    transform: scale(1.1);
+    background: rgba(37,211,102,0.8);
+}
