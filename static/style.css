@@ -30,13 +30,6 @@ body {
     gap: 4px; /* Espaço entre logo e frase */
 }
 
-.logo-text {
-    color: #4DD2FF;
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 4px;
-}
-
 /* MENU */
 .menu a {
     margin-left: 30px;
@@ -140,25 +133,25 @@ body {
 }
 
 /* ===================== */
-/* CARDS ESTILO BOLHA CLARA iOS */
+/* CARDS ESTILO BOLHA TRANSLÚCIDA iOS */
 /* ===================== */
 .card {
-    background: rgba(0, 150, 255, 0.25) !important; /* azul clarinho translúcido */
-    backdrop-filter: blur(14px);
+    background: rgba(0, 150, 255, 0.15) !important; /* azul super transparente */
+    backdrop-filter: blur(18px);
     border-radius: 30px !important;
     box-shadow: 
-        6px 6px 18px rgba(0,0,0,0.25),
-        -6px -6px 18px rgba(255,255,255,0.2) !important;
-    border: 1px solid rgba(255,255,255,0.15);
+        6px 6px 20px rgba(0,0,0,0.2),
+        -6px -6px 20px rgba(255,255,255,0.15) !important;
+    border: 1px solid rgba(255,255,255,0.1);
     transition: 0.35s ease;
-    color: #fff; /* mantém texto branco */
+    color: #fff;
 }
 
 .card:hover {
     transform: scale(1.03);
     box-shadow: 
-        8px 8px 22px rgba(0,0,0,0.3),
-        -8px -8px 22px rgba(255,255,255,0.25) !important;
+        8px 8px 25px rgba(0,0,0,0.25),
+        -8px -8px 25px rgba(255,255,255,0.2) !important;
 }
 
 /* ÍCONE */
@@ -167,16 +160,25 @@ body {
     margin-bottom: 10px;
 }
 
-/* TÍTULO */
+/* TÍTULO DO CARD EM BOLHA iOS */
 .card h2 {
     margin: 10px 0 5px;
     font-size: 24px;
     font-weight: bold;
-    color: white;
-    background: rgba(0,102,255,0.7);
+    color: #fff;
+    background: rgba(0,102,255,0.4); /* azul translúcido */
+    border-radius: 20px; /* bolha */
+    padding: 8px 16px;
     display: inline-block;
-    padding: 5px 10px;
-    border-radius: 6px;
+    box-shadow: 
+        3px 3px 10px rgba(0,0,0,0.25),
+        -3px -3px 10px rgba(255,255,255,0.15);
+    transition: 0.3s;
+}
+
+.card h2:hover {
+    transform: scale(1.05);
+    background: rgba(0,102,255,0.6);
 }
 
 /* PREÇO */
@@ -212,34 +214,30 @@ body {
     font-size: 16px;
 }
 
-/* ===================== */
 /* BOTÃO DENTRO DO CARD */
-/* ===================== */
 .btn-card {
-    background: rgba(0,150,255,0.35) !important;
+    background: rgba(0,150,255,0.2) !important; /* super transparente */
     border-radius: 40px !important;
-    border: 1px solid rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(12px);
     box-shadow:
-        4px 4px 12px rgba(0,0,0,0.25),
+        4px 4px 12px rgba(0,0,0,0.2),
         -4px -4px 12px rgba(255,255,255,0.15);
     transition: .3s;
     display: block;
     text-align: center;
     font-weight: bold;
-    color: #000; /* texto preto para contraste */
+    color: #000; /* contraste */
     text-decoration: none;
     padding: 12px;
 }
 
 .btn-card:hover {
     transform: scale(1.09);
-    background: rgba(0,150,255,0.55) !important;
+    background: rgba(0,150,255,0.35) !important;
 }
 
-/* ===================== */
 /* BOTÃO WHATSAPP (opcional) */
-/* ===================== */
 .btn-whats {
     background: rgba(37,211,102,0.6);
     color: #fff;
@@ -269,12 +267,9 @@ body {
     font-weight: 600;
     margin-top: 8px;
     letter-spacing: 0.5px;
-
-    /* Glow suave premium */
     text-shadow: 
         0 0 8px rgba(77,210,255,0.6),
         0 0 12px rgba(0,150,255,0.4);
-
     animation: glowPulse 2.5s infinite alternate;
 }
 
