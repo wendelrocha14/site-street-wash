@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             font-family: "Poppins", sans-serif;
-            background: linear-gradient(135deg, #050a1a, #000000);
+            background: linear-gradient(135deg, #0a0f24 20%, #000000 80%);
             color: white;
             display: flex;
             justify-content: center;
@@ -19,39 +19,40 @@
 
         .card {
             background: linear-gradient(135deg, #0d1b3a, #000000);
-            padding: 25px;
             border-radius: 15px;
+            padding: 25px;
             width: 90%;
             max-width: 480px;
-            border: 2px solid rgba(0, 153, 255, 0.3);
-            box-shadow: 0 0 20px rgba(0, 153, 255, 0.3);
+            border: 1px solid rgba(0, 195, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 195, 255, 0.2);
             text-align: center;
             transition: 0.3s ease-in-out;
         }
 
         .card:hover {
-            box-shadow: 0 0 30px #008cff;
-            border-color: #00b7ff;
+            box-shadow: 0 0 25px #00e1ff;
+            border-color: #00e1ff;
         }
 
         h1 {
-            color: #00c3ff;
-            text-shadow: 0 0 12px #00c3ff;
+            font-size: 26px;
             margin-bottom: 20px;
+            color: #00c3ff;
+            text-shadow: 0 0 10px #00c3ff;
         }
 
-        .info-box {
+        .info, .total-box {
             background: rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(0, 153, 255, 0.4);
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 20px;
+            border: 1px solid rgba(0, 195, 255, 0.3);
         }
 
-        label {
+        .label {
+            font-size: 15px;
             margin-top: 10px;
             display: block;
-            font-size: 15px;
             text-align: left;
             color: #9be4ff;
         }
@@ -61,17 +62,17 @@
             padding: 12px;
             border-radius: 8px;
             border: none;
+            margin-top: 5px;
             background: #081020;
             color: white;
             border: 1px solid #00c3ff;
-            margin-top: 5px;
-            box-shadow: 0 0 10px rgba(0, 153, 255, 0.4);
+            box-shadow: 0 0 8px rgba(0, 195, 255, 0.3);
         }
 
         select:focus {
             outline: none;
-            box-shadow: 0 0 15px #00cfff;
-            border-color: #00cfff;
+            box-shadow: 0 0 12px #00e1ff;
+            border-color: #00e1ff;
         }
 
         .btn-whatsapp {
@@ -79,26 +80,27 @@
             margin-top: 25px;
             padding: 15px;
             font-size: 18px;
-            font-weight: bold;
             border-radius: 10px;
             background: #00ff88;
             color: #000;
-            cursor: pointer;
+            font-weight: bold;
             border: none;
+            cursor: pointer;
             transition: 0.3s ease-in-out;
             box-shadow: 0 0 10px #00ff88;
         }
 
         .btn-whatsapp:hover {
-            background: #00ff9d;
-            box-shadow: 0 0 20px #00ff9d;
+            box-shadow: 0 0 20px #00ff88;
+            background: #00ff99;
         }
 
         .btn-voltar {
             color: #00c3ff;
-            display: block;
             margin-top: 15px;
+            display: inline-block;
             text-decoration: none;
+            transition: 0.3s;
         }
 
         .btn-voltar:hover {
@@ -128,31 +130,35 @@
                 });
         }
 
+        function atualizarTotal() {
+            const base = parseFloat("{{ preco_base }}");
+            const extra = parseFloat(document.getElementById("extra").value);
+            const total = base + extra;
+
+            document.getElementById("total-final").innerHTML = total.toFixed(2).replace(".", ",");
+        }
+
         function enviarWhatsApp() {
             const servico = "{{ servico }}";
             const veiculo = "{{ veiculo }}";
-            const extra_nome = "{{ extra_nome }}";
-            const extra_valor = "{{ extra_valor }}";
-            const preco_final = "{{ preco_final }}";
+            const base = parseFloat("{{ preco_base }}");
+            const extraTxt = document.getElementById("extra").selectedOptions[0].text;
+            const extraValor = parseFloat(document.getElementById("extra").value);
+            const total = base + extraValor;
 
             const data = document.getElementById("data").value;
             const horario = document.getElementById("horario").value;
 
-            let extrasMsg = "";
-            if (extra_nome && extra_nome !== "Nenhum") {
-                extrasMsg = `%0A• Extra: ${extra_nome} (+R$ ${extra_valor})`;
-            }
-
-            const mensagem =
-                `Olá! Quero confirmar o agendamento:%0A` +
+            const msg = 
+                `Olá! Quero confirmar um agendamento:%0A` +
                 `• Serviço: ${servico}%0A` +
                 `• Veículo: ${veiculo}%0A` +
-                extrasMsg +
-                `%0A• Valor Final: R$ ${preco_final}%0A` +
+                `• Extra: ${extraTxt}%0A` +
+                `• Total: R$ ${total.toFixed(2)}%0A` +
                 `• Data: ${data}%0A` +
                 `• Horário: ${horario}`;
 
-            const link = `https://wa.me/5551999522076?text=${mensagem}`;
+            const link = `https://wa.me/5551999522076?text=${msg}`;
             window.location.href = link;
         }
     </script>
@@ -161,20 +167,26 @@
 <body>
 
 <div class="card">
-    <h1>Confirmar Agendamento</h1>
+    <h1>Finalizar Agendamento</h1>
 
-    <div class="info-box">
+    <div class="info">
         <p><b>Serviço:</b> {{ servico }}</p>
         <p><b>Veículo:</b> {{ veiculo }}</p>
-
-        {% if extra_nome %}
-            <p><b>Extra:</b> {{ extra_nome }} (R$ {{ extra_valor }})</p>
-        {% endif %}
-
-        <p><b>Valor Total:</b> R$ {{ preco_final }}</p>
+        <p><b>Preço Base:</b> R$ {{ preco_base }}</p>
     </div>
 
-    <label>Escolha a Data:</label>
+    <label class="label">Serviço Extra:</label>
+    <select id="extra" onchange="atualizarTotal()">
+        <option value="0">Nenhum extra</option>
+        <option value="10">Removedor de piche - R$10,00</option>
+        <option value="50">Cera Premium - R$50,00</option>
+    </select>
+
+    <div class="total-box">
+        <b>Total:</b> R$ <span id="total-final">{{ preco_base }}</span>
+    </div>
+
+    <label class="label">Escolha a Data:</label>
     <select id="data" onchange="carregarHorarios()">
         <option value="">Selecione...</option>
         {% for d in datas %}
@@ -182,9 +194,9 @@
         {% endfor %}
     </select>
 
-    <label>Escolha o Horário:</label>
+    <label class="label">Selecione o Horário:</label>
     <select id="horario">
-        <option>Selecione a data primeiro...</option>
+        <option>Selecione uma data primeiro...</option>
     </select>
 
     <button class="btn-whatsapp" onclick="enviarWhatsApp()">Confirmar no WhatsApp</button>

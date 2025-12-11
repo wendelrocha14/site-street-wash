@@ -110,7 +110,7 @@ def agendar():
         preco_final=preco_final
     )
 
-# API de horários para JS
+# API de horários para JS 
 @app.route("/horarios")
 def horarios():
     data_escolhida = request.args.get("data")
