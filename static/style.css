@@ -133,25 +133,23 @@ body {
 }
 
 /* ===================== */
-/* CARDS ESTILO BOLHA TRANSLÚCIDA iOS */
+/* CARDS TRANSLÚCIDOS COM BORDA NEON */
 /* ===================== */
 .card {
-    background: rgba(0, 150, 255, 0.15) !important; /* azul super transparente */
-    backdrop-filter: blur(18px);
-    border-radius: 30px !important;
+    background: rgba(255, 255, 255, 0.05); /* transparente */
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    border: 2px solid rgba(0, 170, 255, 0.6); /* borda azul neon */
     box-shadow: 
-        6px 6px 20px rgba(0,0,0,0.2),
-        -6px -6px 20px rgba(255,255,255,0.15) !important;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: 0.35s ease;
+        0 0 15px rgba(0, 170, 255, 0.3);
+    transition: 0.3s ease;
     color: #fff;
 }
 
 .card:hover {
-    transform: scale(1.03);
+    transform: translateY(-5px);
     box-shadow: 
-        8px 8px 25px rgba(0,0,0,0.25),
-        -8px -8px 25px rgba(255,255,255,0.2) !important;
+        0 0 25px rgba(0, 170, 255, 0.5);
 }
 
 /* ÍCONE */
@@ -160,25 +158,23 @@ body {
     margin-bottom: 10px;
 }
 
-/* TÍTULO DO CARD EM BOLHA iOS */
+/* TÍTULO DO CARD */
 .card h2 {
     margin: 10px 0 5px;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
-    color: #fff;
-    background: rgba(0,102,255,0.4); /* azul translúcido */
-    border-radius: 20px; /* bolha */
-    padding: 8px 16px;
+    color: rgba(77, 210, 255, 0.7); /* azul clarinho */
+    background: rgba(255,255,255,0.05); /* transparente */
+    border-radius: 20px;
+    border: 1px solid rgba(0,170,255,0.6); /* borda azul neon */
+    padding: 6px 14px;
     display: inline-block;
-    box-shadow: 
-        3px 3px 10px rgba(0,0,0,0.25),
-        -3px -3px 10px rgba(255,255,255,0.15);
     transition: 0.3s;
 }
 
 .card h2:hover {
     transform: scale(1.05);
-    background: rgba(0,102,255,0.6);
+    box-shadow: 0 0 12px rgba(0, 170, 255, 0.6);
 }
 
 /* PREÇO */
@@ -214,50 +210,26 @@ body {
     font-size: 16px;
 }
 
-/* BOTÃO DENTRO DO CARD */
+/* BOTÃO "AGENDAR AGORA" */
 .btn-card {
-    background: rgba(0,150,255,0.2) !important; /* super transparente */
-    border-radius: 40px !important;
-    border: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(12px);
-    box-shadow:
-        4px 4px 12px rgba(0,0,0,0.2),
-        -4px -4px 12px rgba(255,255,255,0.15);
-    transition: .3s;
     display: block;
     text-align: center;
     font-weight: bold;
-    color: #000; /* contraste */
-    text-decoration: none;
+    color: rgba(77, 210, 255, 0.8); /* azul clarinho */
+    background: rgba(255,255,255,0.05); /* transparente */
+    border: 1px solid rgba(0,170,255,0.6); /* borda azul neon */
+    border-radius: 30px;
     padding: 12px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    box-shadow:
+        0 0 10px rgba(0, 170, 255, 0.3);
 }
 
 .btn-card:hover {
-    transform: scale(1.09);
-    background: rgba(0,150,255,0.35) !important;
-}
-
-/* BOTÃO WHATSAPP (opcional) */
-.btn-whats {
-    background: rgba(37,211,102,0.6);
-    color: #fff;
-    padding: 15px 25px;
-    border-radius: 40px;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.25);
-    box-shadow:
-        4px 4px 12px rgba(0,0,0,0.35),
-        -4px -4px 12px rgba(255,255,255,0.15);
-    transition: .3s;
-}
-
-.btn-whats:hover {
-    transform: scale(1.1);
-    background: rgba(37,211,102,0.8);
+    transform: scale(1.07);
+    box-shadow: 0 0 18px rgba(0, 170, 255, 0.5);
+    background: rgba(255,255,255,0.08);
 }
 
 /* ====== FRASE AO LADO/ABAIXO DA LOGO ====== */
