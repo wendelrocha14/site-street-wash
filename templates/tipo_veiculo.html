@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipo de Veículo</title>
+    <title>Tipo de Veículo - StreetWash</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #000814, #001d3d);
+            background: linear-gradient(135deg, #02121E, #0A3D62, #081F2F);
             font-family: "Poppins", sans-serif;
             color: white;
             display: flex;
@@ -19,17 +19,18 @@
         .container {
             width: 95%;
             max-width: 540px;
-            background: rgba(0,0,0,0.65);
+            background: rgba(255,255,255,0.05); /* vidro transparente */
+            backdrop-filter: blur(12px);
             padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 195, 255, 0.25);
-            box-shadow: 0 0 15px rgba(0,195,255,0.3);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 170, 255, 0.35); /* neon azul */
+            box-shadow: 0 0 25px rgba(0,170,255,0.2);
         }
 
         h1 {
             text-align: center;
             color: #00c3ff;
-            text-shadow: 0 0 10px #00c3ff;
+            text-shadow: 0 0 15px #00c3ff;
             margin-bottom: 25px;
         }
 
@@ -40,11 +41,11 @@
         }
 
         .item {
-            background: #001530;
-            padding: 12px;
-            border-radius: 10px;
-            margin: 7px 0;
-            border: 1px solid rgba(0,195,255,0.2);
+            background: rgba(255,255,255,0.05); /* vidro */
+            padding: 14px;
+            border-radius: 12px;
+            margin: 10px 0;
+            border: 1px solid rgba(0,170,255,0.25);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -53,7 +54,7 @@
         }
 
         .item:hover {
-            box-shadow: 0 0 12px #00e1ff;
+            box-shadow: 0 0 15px #00e1ff;
             border-color: #00e1ff;
         }
 
@@ -64,26 +65,33 @@
         .btn {
             margin-top: 25px;
             width: 100%;
-            padding: 14px;
-            border-radius: 10px;
-            border: none;
+            padding: 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(0,170,255,0.5);
             font-size: 18px;
             font-weight: bold;
-            background: #00d5ff;
-            box-shadow: 0 0 10px #00d5ff;
+            background: rgba(0,210,255,0.35);
+            color: #000;
             cursor: pointer;
-            transition: 0.3s;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0,210,255,0.35);
+            transition: 0.3s ease;
+            backdrop-filter: blur(8px);
         }
 
         .btn:hover {
-            background: #00e1ff;
-            box-shadow: 0 0 18px #00e1ff;
+            background: rgba(0,210,255,0.55);
+            box-shadow: 0 0 25px rgba(0,210,255,0.5);
         }
 
         .back {
             text-align: center;
             margin-top: 15px;
             color: #00baff;
+        }
+
+        .back:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -94,7 +102,6 @@
     <h1>Escolha o Tipo de Veículo</h1>
 
     <form action="/agendar" method="GET">
-
         <input type="hidden" name="servico" value="{{ servico }}">
 
         <!-- TIPOS DE VEÍCULO -->
@@ -120,7 +127,7 @@
             <input type="radio" name="veiculo" value="Caminhonete" required>
         </label>
 
-        <hr style="border-color: rgba(0,195,255,0.25); margin:20px 0;">
+        <hr style="border-color: rgba(0,170,255,0.2); margin:20px 0;">
 
         <!-- SERVIÇOS EXTRAS -->
         <p class="section-title">Serviços Extras (opcional):</p>

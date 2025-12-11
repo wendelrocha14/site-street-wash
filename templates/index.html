@@ -12,22 +12,9 @@
     <header class="header">
         <div class="logo-area">
             <img src="{{ url_for('static', filename='logo.jpeg') }}" class="logo">
-
-            <!-- FRASE DESTACADA AO LADO OU ABAIXO DA LOGO -->
             <h2 class="top-frase">Seu carro limpo no conforto da sua casa.</h2>
         </div>
     </header>
-
-    <!-- HERO (texto ajustado para manter o estilo, mas mais clean) -->
-    <section class="hero">
-        <h1>Qualidade, praticidade e cuidado com seu carro.</h1>
-        <p>Atendimento profissional em Nova Hartz e região.</p>
-
-        <div class="hero-buttons">
-            <a href="/agendar" class="btn-primary">📅 Agendar Lavagem</a>
-            <a href="#servicos" class="btn-outline">🔧 Ver Serviços</a>
-        </div>
-    </section>
 
     <!-- ============================= -->
     <!--        SERVIÇOS DA HOME       -->
@@ -36,60 +23,48 @@
         <h1 class="titulo-servicos">Serviços Disponíveis</h1>
 
         <div class="cards-servicos">
-
             <!-- CARD 1 -->
             <div class="card">
                 <div class="card-icon">💧</div>
-                <h2>Lavagem Manutenção</h2>
-                <p class="preco">R$ 60</p>
-
+                <h2>Lavagem De Manutenção</h2>
+                <p class="preco">R$ 50 - 60</p>
                 <ul>
                     <li>✔ Lavagem externa completa</li>
                     <li>✔ Aspiração</li>
                     <li>✔ Secagem com microfibra</li>
                     <li>✔ Limpeza dos vidros</li>
                     <li>✔ Pneu brilhante</li>
-                    <li>✔ Duração: 30-45 min</li>
                 </ul>
-
-                <a href="/agendar" class="btn-card">Agendar Agora</a>
+                <a href="/tipo-veiculo?servico=Lavagem De Manutenção" class="btn-card">Escolher</a>
             </div>
 
             <!-- CARD 2 -->
             <div class="card">
                 <div class="card-icon">✨</div>
                 <h2>Lavagem Detalhada Premium</h2>
-                <p class="preco">R$ 70</p>
-
+                <p class="preco">R$ 65 - 90</p>
                 <ul>
-                    <li>✔ Lavagem técnica premium</li>
+                    <li>✔ Lavagem técnica detalhada</li>
                     <li>✔ Detalhamento com pincel</li>
                     <li>✔ Higienização leve dos bancos</li>
                     <li>✔ Descontaminação</li>
                     <li>✔ Limpeza detalhada de rodas</li>
                     <li>✔ Proteção UV no painel</li>
-                    <li>✔ Duração: 60-90 min</li>
                 </ul>
-
-                <a href="/agendar" class="btn-card">Agendar Agora</a>
+                <a href="/tipo-veiculo?servico=Lavagem Detalhada Premium" class="btn-card">Escolher</a>
             </div>
 
-            <!-- CARD 3 (SERVIÇOS EXTRAS — MANTIDO DE FORMA CLEAN) -->
+            <!-- CARD 3 -->
             <div class="card">
-                <div class="card-icon">🎯</div>
-                <h2>Serviços Extras</h2>
-                <p class="preco">R$ 10 - R$ 50</p>
-
+                <div class="card-icon">🏍️</div>
+                <h2>Moto</h2>
+                <p class="preco">R$ 30</p>
                 <ul>
-                    <li>✔ Removedor de piche</li>
-                    <li>✔ Cera líquida premium</li>
-                    <li>✔ Polimentos leves</li>
-                    <li>✔ Duração: 45-60 min</li>
+                    <li>✔ Lavagem completa</li>
+                    <li>✔ Produtos premium</li>
                 </ul>
-
-                <a href="/agendar" class="btn-card">Agendar Agora</a>
+                <a href="/tipo-veiculo?servico=Moto" class="btn-card">Escolher</a>
             </div>
-
         </div>
     </section>
 
