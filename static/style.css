@@ -27,6 +27,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 4px; /* Espaço entre logo e frase */
 }
 
 .logo-text {
@@ -69,49 +70,53 @@ body {
     margin-top: 10px;
 }
 
-/* BOTÕES */
+/* BOTÕES HERO */
 .hero-buttons {
     margin-top: 40px;
 }
 
-.btn-primary {
-    background: #4DD2FF;
-    padding: 15px 25px;
-    border-radius: 10px;
+/* ===================== */
+/* BOTÕES ESTILO BOLHA iOS */
+/* ===================== */
+.btn-primary, .btn-outline {
+    border-radius: 50px !important;
+    padding: 16px 28px !important;
     font-size: 18px;
+    font-weight: 600;
+    backdrop-filter: blur(12px);
+    box-shadow: 
+        4px 4px 12px rgba(0,0,0,0.3),
+        -4px -4px 12px rgba(255,255,255,0.15);
+    transition: 0.25s ease;
+}
+
+/* Botão principal */
+.btn-primary {
+    background: rgba(77,210,255,0.55) !important;
+    border: 1px solid rgba(255,255,255,0.25);
     color: #000;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 0 15px rgba(77,210,255,0.4);
-    transition: 0.3s;
-    margin-right: 20px;
 }
 
 .btn-primary:hover {
-    background: #7EE6FF;
-    transform: scale(1.05);
+    transform: scale(1.07);
+    background: rgba(77,210,255,0.75) !important;
 }
 
+/* Botão outline */
 .btn-outline {
-    padding: 15px 25px;
-    border-radius: 10px;
-    font-size: 18px;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(77,210,255,0.6) !important;
     color: #4DD2FF;
-    text-decoration: none;
-    border: 2px solid #4DD2FF;
-    font-weight: bold;
-    transition: 0.3s;
 }
 
 .btn-outline:hover {
-    background: rgba(77,210,255,0.1);
-    transform: scale(1.05);
+    transform: scale(1.07);
+    background: rgba(77,210,255,0.15);
 }
 
-/* ========================= */
-/*     SEÇÃO SERVIÇOS       */
-/* ========================= */
-
+/* ============================= */
+/*        SERVIÇOS DA HOME       */
+/* ============================= */
 .servicos-home {
     padding: 60px 0;
     background: #000;
@@ -134,24 +139,26 @@ body {
     flex-wrap: wrap;
 }
 
-/* CARD */
+/* ===================== */
+/* CARDS ESTILO BOLHA CLARA iOS */
+/* ===================== */
 .card {
-    background: #2a2a2a;
-    padding: 30px;
-    width: 320px;
-    border-radius: 20px;
-    text-align: left;
-
-    /* Azul neon */
-    box-shadow: 0px 0px 15px rgba(0, 170, 255, 0.25);
-    border-top: 4px solid #00aaff;
-
-    transition: 0.3s ease;
+    background: rgba(0, 150, 255, 0.25) !important; /* azul clarinho translúcido */
+    backdrop-filter: blur(14px);
+    border-radius: 30px !important;
+    box-shadow: 
+        6px 6px 18px rgba(0,0,0,0.25),
+        -6px -6px 18px rgba(255,255,255,0.2) !important;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: 0.35s ease;
+    color: #fff; /* mantém texto branco */
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0px 0px 25px rgba(0, 170, 255, 0.45);
+    transform: scale(1.03);
+    box-shadow: 
+        8px 8px 22px rgba(0,0,0,0.3),
+        -8px -8px 22px rgba(255,255,255,0.25) !important;
 }
 
 /* ÍCONE */
@@ -166,7 +173,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     color: white;
-    background: rgba(0, 102, 255, 0.9);
+    background: rgba(0,102,255,0.7);
     display: inline-block;
     padding: 5px 10px;
     border-radius: 6px;
@@ -205,143 +212,29 @@ body {
     font-size: 16px;
 }
 
-/* BOTÃO */
-.btn-card {
-    display: block;
-    background: #00aaff;
-    color: #000;
-    padding: 12px;
-    text-align: center;
-    border-radius: 12px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: 0.3s ease;
-    box-shadow: 0px 0px 12px rgba(0, 170, 255, 0.4);
-}
-
-.btn-card:hover {
-    background: #0090dd;
-    box-shadow: 0px 0px 20px rgba(0, 170, 255, 0.6);
-}
-
-/* ====== FRASE AO LADO/ABAIXO DA LOGO ====== */
-.top-frase {
-    color: #4DD2FF;
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 8px;
-    letter-spacing: 0.5px;
-
-    /* Glow suave premium */
-    text-shadow: 
-        0 0 8px rgba(77,210,255,0.6),
-        0 0 12px rgba(0,150,255,0.4);
-
-    animation: glowPulse 2.5s infinite alternate;
-}
-
-/* Animação leve de brilho (não atrapalha) */
-@keyframes glowPulse {
-    0% {
-        text-shadow: 
-            0 0 6px rgba(77,210,255,0.5),
-            0 0 12px rgba(0,150,255,0.3);
-    }
-    100% {
-        text-shadow: 
-            0 0 12px rgba(77,210,255,0.8),
-            0 0 18px rgba(0,150,255,0.5);
-    }
-}
-
-.logo-area {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px; /* Espaço entre logo e frase */
-} 
-
-/* ===================== */
-/* BOTÕES ESTILO BOLHA iOS */
-/* ===================== */
-.btn-primary, .btn-outline {
-    border-radius: 50px !important;
-    padding: 16px 28px !important;
-    font-size: 18px;
-    font-weight: 600;
-    backdrop-filter: blur(12px);
-    box-shadow: 
-        4px 4px 12px rgba(0,0,0,0.3),
-        -4px -4px 12px rgba(255,255,255,0.15);
-    transition: 0.25s ease;
-}
-
-/* Botão principal com bolha */
-.btn-primary {
-    background: rgba(77,210,255,0.55) !important;
-    border: 1px solid rgba(255,255,255,0.25);
-}
-
-.btn-primary:hover {
-    transform: scale(1.07);
-    background: rgba(77,210,255,0.75) !important;
-}
-
-/* Botão outline estilo bolha */
-.btn-outline {
-    background: rgba(255,255,255,0.05);
-    border: 2px solid rgba(77,210,255,0.6) !important;
-}
-
-.btn-outline:hover {
-    transform: scale(1.07);
-    background: rgba(77,210,255,0.15);
-}
-
-/* ===================== */
-/* CARDS ESTILO BOLHA iOS */
-/* ===================== */
-.card {
-    background: rgba(25,25,25,0.55) !important;
-    backdrop-filter: blur(14px);
-    border-radius: 30px !important;
-    box-shadow: 
-        6px 6px 18px rgba(0,0,0,0.45),
-        -6px -6px 18px rgba(255,255,255,0.1) !important;
-    border: 1px solid rgba(255,255,255,0.06);
-    transition: 0.35s ease;
-}
-
-.card:hover {
-    transform: scale(1.03);
-    box-shadow: 
-        8px 8px 22px rgba(0,0,0,0.5),
-        -8px -8px 22px rgba(255,255,255,0.16) !important;
-}
-
 /* ===================== */
 /* BOTÃO DENTRO DO CARD */
 /* ===================== */
 .btn-card {
-    background: rgba(77,210,255,0.5) !important;
+    background: rgba(0,150,255,0.35) !important;
     border-radius: 40px !important;
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.2);
     backdrop-filter: blur(10px);
     box-shadow:
-        4px 4px 12px rgba(0,0,0,0.35),
+        4px 4px 12px rgba(0,0,0,0.25),
         -4px -4px 12px rgba(255,255,255,0.15);
     transition: .3s;
     display: block;
     text-align: center;
     font-weight: bold;
-    color: #000;
+    color: #000; /* texto preto para contraste */
     text-decoration: none;
     padding: 12px;
 }
 
 .btn-card:hover {
     transform: scale(1.09);
-    background: rgba(77,210,255,0.7) !important;
+    background: rgba(0,150,255,0.55) !important;
 }
 
 /* ===================== */
@@ -367,4 +260,34 @@ body {
 .btn-whats:hover {
     transform: scale(1.1);
     background: rgba(37,211,102,0.8);
+}
+
+/* ====== FRASE AO LADO/ABAIXO DA LOGO ====== */
+.top-frase {
+    color: #4DD2FF;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+
+    /* Glow suave premium */
+    text-shadow: 
+        0 0 8px rgba(77,210,255,0.6),
+        0 0 12px rgba(0,150,255,0.4);
+
+    animation: glowPulse 2.5s infinite alternate;
+}
+
+/* Animação leve de brilho */
+@keyframes glowPulse {
+    0% {
+        text-shadow: 
+            0 0 6px rgba(77,210,255,0.5),
+            0 0 12px rgba(0,150,255,0.3);
+    }
+    100% {
+        text-shadow: 
+            0 0 12px rgba(77,210,255,0.8),
+            0 0 18px rgba(0,150,255,0.5);
+    }
 }
