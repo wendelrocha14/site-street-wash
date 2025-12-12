@@ -1,27 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços - StreetWash</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+<div class="servicos-container">
 
-<div class="container">
+    <h1>Serviços Disponíveis</h1>
 
-    <h1 class="titulo-pagina">Serviços Disponíveis</h1>
+    <div class="servico-item">
+        <a href="/tipo-veiculo?servico=Lavagem De Manutenção">Lavagem De Manutenção</a>
+        <p class="servico-preco">A partir de R$ 60</p>
+    </div>
 
-    <div class="cards-container">
-        {% for servico, preco in lista_servicos.items() %}
-        <a href="/tipo-veiculo?servico={{ servico }}" class="card-servico">
-            <h2 class="card-titulo">{{ servico }}</h2>
-            <p class="card-preco">A partir de R$ {{ preco }}</p>
-        </a>
-        {% endfor %}
+    <div class="servico-item">
+        <a href="/tipo-veiculo?servico=Lavagem Detalhada Premium">Lavagem Detalhada Premium</a>
+        <p class="servico-preco">A partir de R$ 70</p>
+    </div>
+
+    <div class="servico-item">
+        <a href="/agendar?servico=Moto&veiculo=Moto&extra=Nenhum">Moto</a>
+        <p class="servico-preco">A partir de R$ 30</p>
     </div>
 
 </div>
-
-</body>
-</html>
