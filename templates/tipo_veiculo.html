@@ -3,155 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipo de Veículo - StreetWash</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #02121E, #0A3D62, #081F2F);
-            font-family: "Poppins", sans-serif;
-            color: white;
-            display: flex;
-            justify-content: center;
-            padding: 25px;
-        }
-
-        .container {
-            width: 95%;
-            max-width: 540px;
-            background: rgba(255,255,255,0.05); /* vidro transparente */
-            backdrop-filter: blur(12px);
-            padding: 25px;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 170, 255, 0.35); /* neon azul */
-            box-shadow: 0 0 25px rgba(0,170,255,0.2);
-        }
-
-        h1 {
-            text-align: center;
-            color: #00c3ff;
-            text-shadow: 0 0 15px #00c3ff;
-            margin-bottom: 25px;
-        }
-
-        .section-title {
-            font-size: 18px;
-            margin: 10px 0;
-            color: #9be4ff;
-        }
-
-        .item {
-            background: rgba(255,255,255,0.05); /* vidro */
-            padding: 14px;
-            border-radius: 12px;
-            margin: 10px 0;
-            border: 1px solid rgba(0,170,255,0.25);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: 0.25s;
-        }
-
-        .item:hover {
-            box-shadow: 0 0 15px #00e1ff;
-            border-color: #00e1ff;
-        }
-
-        input[type="radio"] {
-            transform: scale(1.3);
-        }
-
-        .btn {
-            margin-top: 25px;
-            width: 100%;
-            padding: 16px;
-            border-radius: 50px;
-            border: 1px solid rgba(0,170,255,0.5);
-            font-size: 18px;
-            font-weight: bold;
-            background: rgba(0,210,255,0.35);
-            color: #000;
-            cursor: pointer;
-            text-align: center;
-            box-shadow: 0 0 15px rgba(0,210,255,0.35);
-            transition: 0.3s ease;
-            backdrop-filter: blur(8px);
-        }
-
-        .btn:hover {
-            background: rgba(0,210,255,0.55);
-            box-shadow: 0 0 25px rgba(0,210,255,0.5);
-        }
-
-        .back {
-            text-align: center;
-            margin-top: 15px;
-            color: #00baff;
-        }
-
-        .back:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Tipo de Veículo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
 <div class="container">
 
-    <h1>Escolha o Tipo de Veículo</h1>
+    <h1 class="titulo-pagina">Escolha o Tipo do Veículo</h1>
 
-    <form action="/agendar" method="GET">
-        <input type="hidden" name="servico" value="{{ servico }}">
+    <form method="POST" class="form-veiculo">
 
-        <!-- TIPOS DE VEÍCULO -->
-        <p class="section-title">Tipo de Veículo (obrigatório):</p>
+        <div class="opcao-veiculo">
+            <input type="radio" id="hatch" name="veiculo" value="Hatch" required>
+            <label for="hatch">Hatch</label>
+        </div>
 
-        <label class="item">
-            Hatch
-            <input type="radio" name="veiculo" value="Hatch" required>
-        </label>
+        <div class="opcao-veiculo">
+            <input type="radio" id="sedan" name="veiculo" value="Sedan">
+            <label for="sedan">Sedan</label>
+        </div>
 
-        <label class="item">
-            Sedan
-            <input type="radio" name="veiculo" value="Sedan" required>
-        </label>
+        <div class="opcao-veiculo">
+            <input type="radio" id="suv" name="veiculo" value="SUV">
+            <label for="suv">SUV</label>
+        </div>
 
-        <label class="item">
-            SUV
-            <input type="radio" name="veiculo" value="SUV" required>
-        </label>
+        <div class="opcao-veiculo">
+            <input type="radio" id="caminhonete" name="veiculo" value="Caminhonete">
+            <label for="caminhonete">Caminhonete</label>
+        </div>
 
-        <label class="item">
-            Caminhonete
-            <input type="radio" name="veiculo" value="Caminhonete" required>
-        </label>
+        <h2 class="titulo-extra">Serviço Extra (Opcional)</h2>
 
-        <hr style="border-color: rgba(0,170,255,0.2); margin:20px 0;">
+        <select name="extra" class="select-extra">
+            <option value="Nenhum">Nenhum</option>
+            <option value="Removedor de Piche">Removedor de Piche (+R$ 10)</option>
+            <option value="Cera Líquida Premium">Cera Líquida Premium (+R$ 50)</option>
+        </select>
 
-        <!-- SERVIÇOS EXTRAS -->
-        <p class="section-title">Serviços Extras (opcional):</p>
-
-        <label class="item">
-            Removedor de Piche — R$ 10
-            <input type="radio" name="extra" value="Removedor de Piche">
-        </label>
-
-        <label class="item">
-            Cera Líquida Premium — R$ 50
-            <input type="radio" name="extra" value="Cera Líquida Premium">
-        </label>
-
-        <label class="item">
-            Nenhum extra
-            <input type="radio" name="extra" value="Nenhum" checked>
-        </label>
-
-        <button class="btn" type="submit">Continuar</button>
+        <button type="submit" class="botao-agendar">Continuar</button>
 
     </form>
-
-    <a href="/servicos" class="back">⬅ Voltar</a>
 
 </div>
 

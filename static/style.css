@@ -1,18 +1,21 @@
-/* ======= FUNDO PADRÃO ======= */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    /* Degradê do azul escuro para preto */
-    background: linear-gradient(135deg, #001d3d, #000814);
-    color: rgb(255, 255, 255);
+
+    /* 🔵 Degradê azul → preto em TODAS AS TELAS */
+    background: linear-gradient(135deg, #003566, #000814);
+    background-attachment: fixed; /* Para não mover */
+    background-size: cover;
+
+    color: white;
 }
 
 /* ======= HEADER ======= */
 .header {
     width: 100%;
     padding: 20px 40px;
-    background: #000;
+    background: rgba(0,0,0,0.6); /* leve transparência, mantém o degradê */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -113,7 +116,7 @@ body {
 /* ============================= */
 .servicos-home {
     padding: 60px 0;
-    background: #000;
+    /* REMOVIDO background preto */
     color: #fff;
     text-align: center;
 }
@@ -137,15 +140,15 @@ body {
 /* CARDS GLASSMORPHISM COM BORDA NEON */
 /* ===================== */
 .card {
-    background: rgba(255, 255, 255, 0.1); /* vidro transparente */
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
     border-radius: 25px;
-    border: 2px solid rgba(0, 170, 255, 0.6); /* borda azul neon */
+    border: 2px solid rgba(0, 170, 255, 0.6);
     box-shadow: 0 8px 25px rgba(0, 170, 255, 0.3);
     transition: 0.3s ease;
     color: #fff;
-    width: 380px; /* maior */
-    padding: 40px; /* mais espaço interno */
+    width: 380px;
+    padding: 40px;
 }
 
 .card:hover {
@@ -165,9 +168,9 @@ body {
     font-size: 26px;
     font-weight: bold;
     color: rgba(77, 210, 255, 0.8);
-    background: rgba(255,255,255,0.05); /* transparente */
+    background: rgba(255,255,255,0.05);
     border-radius: 20px;
-    border: 1px solid rgba(0,170,255,0.7); /* borda neon */
+    border: 1px solid rgba(0,170,255,0.7);
     padding: 8px 16px;
     display: inline-block;
     transition: 0.3s;
@@ -211,14 +214,14 @@ body {
     font-size: 16px;
 }
 
-/* BOTÃO "AGENDAR AGORA" */
+/* BOTÃO DO CARD */
 .btn-card {
     display: block;
     text-align: center;
     font-weight: bold;
     color: rgba(77, 210, 255, 0.9);
-    background: rgba(255,255,255,0.05); /* transparente vidro */
-    border: 1px solid rgba(0,170,255,0.7); /* borda azul neon */
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(0,170,255,0.7);
     border-radius: 30px;
     padding: 14px;
     font-size: 18px;
@@ -233,7 +236,7 @@ body {
     background: rgba(255,255,255,0.08);
 }
 
-/* ====== FRASE AO LADO/ABAIXO DA LOGO ====== */
+/* ====== FRASE AO LADO DA LOGO ====== */
 .top-frase {
     color: #4DD2FF;
     font-size: 20px;
