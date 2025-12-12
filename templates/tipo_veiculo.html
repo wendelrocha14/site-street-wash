@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tipo de Veículo - StreetWash</title>
-
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(145deg, #03101c, #062b45, #021722);
+            background: linear-gradient(135deg, #02121E, #0A3D62, #081F2F);
             font-family: "Poppins", sans-serif;
             color: white;
             display: flex;
@@ -17,46 +16,36 @@
             padding: 25px;
         }
 
-        /* ==== CONTAINER GLASS ==== */
         .container {
             width: 95%;
             max-width: 540px;
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(255,255,255,0.05); /* vidro transparente */
+            backdrop-filter: blur(12px);
             padding: 25px;
-            border-radius: 28px;
-            border: 1px solid rgba(0, 150, 255, 0.45);
-            box-shadow: 0 0 40px rgba(0,150,255,0.25);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 170, 255, 0.35); /* neon azul */
+            box-shadow: 0 0 25px rgba(0,170,255,0.2);
         }
 
-        /* ==== TÍTULO ==== */
         h1 {
             text-align: center;
-            color: #79d5ff;
-            text-shadow: 0 0 20px rgba(0,170,255,0.6);
+            color: #00c3ff;
+            text-shadow: 0 0 15px #00c3ff;
             margin-bottom: 25px;
-            font-weight: 600;
         }
 
         .section-title {
             font-size: 18px;
             margin: 10px 0;
-            color: #bdeaff;
-            font-weight: 500;
+            color: #9be4ff;
         }
 
-        /* ==== BOLHAS (CARDS) ==== */
         .item {
-            background: rgba(255,255,255,0.12);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(255,255,255,0.05); /* vidro */
             padding: 14px;
-            border-radius: 22px;
-            margin: 12px 0;
-            border: 1px solid rgba(0,170,255,0.35);
-            box-shadow: inset 0 0 12px rgba(255,255,255,0.05),
-                        0 0 18px rgba(0,170,255,0.2);
+            border-radius: 12px;
+            margin: 10px 0;
+            border: 1px solid rgba(0,170,255,0.25);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -65,53 +54,40 @@
         }
 
         .item:hover {
-            border-color: #00cfff;
-            box-shadow: 0 0 22px rgba(0,200,255,0.5);
+            box-shadow: 0 0 15px #00e1ff;
+            border-color: #00e1ff;
         }
 
-        /* ==== RADIO MAIOR === */
         input[type="radio"] {
-            transform: scale(1.35);
-            accent-color: #00c4ff;
+            transform: scale(1.3);
         }
 
-        /* ==== BOTÃO CONTINUAR ==== */
         .btn {
             margin-top: 25px;
             width: 100%;
             padding: 16px;
-            border-radius: 40px;
+            border-radius: 50px;
+            border: 1px solid rgba(0,170,255,0.5);
             font-size: 18px;
             font-weight: bold;
-            border: 1px solid rgba(0,180,255,0.6);
-
-            background: rgba(0,200,255,0.25);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-
-            color: white;
+            background: rgba(0,210,255,0.35);
+            color: #000;
             cursor: pointer;
             text-align: center;
+            box-shadow: 0 0 15px rgba(0,210,255,0.35);
             transition: 0.3s ease;
-
-            box-shadow: 0 0 25px rgba(0,200,255,0.45),
-                        inset 0 0 10px rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
         }
 
         .btn:hover {
-            background: rgba(0,200,255,0.45);
-            box-shadow: 0 0 35px rgba(0,200,255,0.8);
+            background: rgba(0,210,255,0.55);
+            box-shadow: 0 0 25px rgba(0,210,255,0.5);
         }
 
-        /* ==== VOLTAR ==== */
         .back {
             text-align: center;
             margin-top: 15px;
             color: #00baff;
-            font-size: 15px;
-            display: block;
-            text-decoration: none;
-            transition: 0.2s;
         }
 
         .back:hover {
@@ -128,6 +104,7 @@
     <form action="/agendar" method="GET">
         <input type="hidden" name="servico" value="{{ servico }}">
 
+        <!-- TIPOS DE VEÍCULO -->
         <p class="section-title">Tipo de Veículo (obrigatório):</p>
 
         <label class="item">
@@ -150,8 +127,9 @@
             <input type="radio" name="veiculo" value="Caminhonete" required>
         </label>
 
-        <hr style="border-color: rgba(0,170,255,0.2); margin:25px 0;">
+        <hr style="border-color: rgba(0,170,255,0.2); margin:20px 0;">
 
+        <!-- SERVIÇOS EXTRAS -->
         <p class="section-title">Serviços Extras (opcional):</p>
 
         <label class="item">

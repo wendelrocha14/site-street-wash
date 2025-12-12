@@ -10,121 +10,102 @@
             margin: 0;
             padding: 0;
             font-family: "Poppins", sans-serif;
-
-            background: linear-gradient(135deg, #02121E, #0A3D62, #081F2F);
+            background: linear-gradient(135deg, #0a0f24 20%, #000000 80%);
             color: white;
-
             display: flex;
             justify-content: center;
             padding: 30px;
         }
 
-        /* CARD VIDRO / BOLHA */
         .card {
-            width: 95%;
-            max-width: 480px;
-
-            background: rgba(255,255,255,0.06);
-            backdrop-filter: blur(14px);
-
+            background: linear-gradient(135deg, #0d1b3a, #000000);
+            border-radius: 15px;
             padding: 25px;
-            border-radius: 25px;
-
-            border: 1px solid rgba(0, 170, 255, 0.45);
-            box-shadow:
-                0 0 18px rgba(0,170,255,0.25),
-                0 0 35px rgba(0,170,255,0.15);
-
+            width: 90%;
+            max-width: 480px;
+            border: 1px solid rgba(0, 195, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 195, 255, 0.2);
             text-align: center;
+            transition: 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            box-shadow: 0 0 25px #00e1ff;
+            border-color: #00e1ff;
         }
 
         h1 {
-            font-size: 28px;
+            font-size: 26px;
             margin-bottom: 20px;
-            color: #4DD2FF;
-            text-shadow: 0 0 12px rgba(77,210,255,0.8);
+            color: #00c3ff;
+            text-shadow: 0 0 10px #00c3ff;
         }
 
         .info, .total-box {
-            background: rgba(255,255,255,0.08);
-            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.35);
             padding: 15px;
-            margin-bottom: 22px;
-
-            border: 1px solid rgba(0,170,255,0.35);
-            box-shadow: 0 0 12px rgba(0,170,255,0.15);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 195, 255, 0.3);
         }
 
         .label {
             font-size: 15px;
-            margin: 10px 0 6px;
-            text-align: left;
-            color: #c8ecff;
+            margin-top: 10px;
             display: block;
+            text-align: left;
+            color: #9be4ff;
         }
 
         select {
             width: 100%;
-            padding: 14px;
-
-            border-radius: 12px;
-            border: 1px solid rgba(0,170,255,0.35);
-
-            background: rgba(255,255,255,0.08);
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            margin-top: 5px;
+            background: #081020;
             color: white;
-            font-size: 16px;
-            backdrop-filter: blur(6px);
-            box-shadow: 0 0 10px rgba(0,170,255,0.2);
+            border: 1px solid #00c3ff;
+            box-shadow: 0 0 8px rgba(0, 195, 255, 0.3);
         }
 
         select:focus {
             outline: none;
-            border-color: #00d2ff;
-            box-shadow: 0 0 15px rgba(0,210,255,0.45);
+            box-shadow: 0 0 12px #00e1ff;
+            border-color: #00e1ff;
         }
 
-        /* BOTÃO WHATSAPP */
         .btn-whatsapp {
             width: 100%;
-            padding: 15px;
             margin-top: 25px;
-
-            border-radius: 50px;
-            border: 1px solid rgba(0,255,136,0.6);
-
-            background: rgba(0,255,136,0.45);
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            background: #00ff88;
             color: #000;
             font-weight: bold;
-
-            font-size: 18px;
+            border: none;
             cursor: pointer;
-
-            box-shadow:
-                0 0 15px rgba(0,255,136,0.5),
-                0 0 25px rgba(0,255,136,0.35);
-
-            transition: 0.25s ease;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 0 10px #00ff88;
         }
 
         .btn-whatsapp:hover {
-            background: rgba(0,255,136,0.7);
-            box-shadow:
-                0 0 20px rgba(0,255,136,0.9),
-                0 0 35px rgba(0,255,136,0.55);
-            transform: scale(1.03);
+            box-shadow: 0 0 20px #00ff88;
+            background: #00ff99;
         }
 
-        /* VOLTAR */
         .btn-voltar {
-            display: inline-block;
+            color: #00c3ff;
             margin-top: 15px;
-            color: #66d9ff;
+            display: inline-block;
             text-decoration: none;
-            font-size: 16px;
+            transition: 0.3s;
         }
 
         .btn-voltar:hover {
-            text-decoration: underline;
+            color: #00e1ff;
+            text-shadow: 0 0 10px #00e1ff;
         }
     </style>
 
@@ -153,6 +134,7 @@
             const base = parseFloat("{{ preco_base }}");
             const extra = parseFloat(document.getElementById("extra").value);
             const total = base + extra;
+
             document.getElementById("total-final").innerHTML = total.toFixed(2).replace(".", ",");
         }
 
@@ -167,7 +149,7 @@
             const data = document.getElementById("data").value;
             const horario = document.getElementById("horario").value;
 
-            const msg =
+            const msg = 
                 `Olá! Quero confirmar um agendamento:%0A` +
                 `• Serviço: ${servico}%0A` +
                 `• Veículo: ${veiculo}%0A` +
@@ -176,7 +158,8 @@
                 `• Data: ${data}%0A` +
                 `• Horário: ${horario}`;
 
-            window.location.href = `https://wa.me/5551999522076?text=${msg}`;
+            const link = `https://wa.me/5551999522076?text=${msg}`;
+            window.location.href = link;
         }
     </script>
 </head>
@@ -195,8 +178,8 @@
     <label class="label">Serviço Extra:</label>
     <select id="extra" onchange="atualizarTotal()">
         <option value="0">Nenhum extra</option>
-        <option value="10">Removedor de Piche — R$10,00</option>
-        <option value="50">Cera Líquida Premium — R$50,00</option>
+        <option value="10">Removedor de piche - R$10,00</option>
+        <option value="50">Cera Premium - R$50,00</option>
     </select>
 
     <div class="total-box">
