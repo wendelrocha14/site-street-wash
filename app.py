@@ -4,19 +4,17 @@ from agenda import gerar_datas_automaticas, gerar_horarios_por_dia, agendamento
 
 app = Flask(__name__)
 
-# Tabela com valores base dos serviços (SERVIÇOS REDUZIDOS)
+# Tabela com valores base dos serviços
 PRECOS = {
     "Lavagem De Manutenção": 60,
     "Lavagem Detalhada Premium": 70,
     "Moto": 30
 }
 
-
 # Página inicial
 @app.route("/")
 def home():
     return render_template("index.html")
-
 
 # Cadastro
 @app.route("/cadastro", methods=["GET", "POST"])
@@ -30,14 +28,12 @@ def cadastro():
         return redirect("/")
     return render_template("cadastro.html")
 
-
-# Lista de serviços
+# Serviços
 @app.route("/servicos")
 def servicos_flask():
     return render_template("servicos.html", lista_servicos=PRECOS)
 
-
-# Escolher tipo do veículo
+# Escolher tipo de veículo
 @app.route("/tipo-veiculo", methods=["GET", "POST"])
 def tipo_veiculo():
     servico = request.args.get("servico")
@@ -45,21 +41,26 @@ def tipo_veiculo():
     if not servico:
         return redirect("/servicos")
 
+    # 🔥 SE O SERVIÇO FOR MOTO → IR DIRETO PARA AGENDAR
+    if servico == "Moto":
+        return redirect(f"/agendar?servico=Moto&veiculo=Moto&extra=Nenhum")
+
+    # Para os demais serviços (carros), segue a escolha de veículo
     if request.method == "POST":
         veiculo = request.form.get("veiculo")
-        return redirect(f"/agendar?servico={servico}&veiculo={veiculo}")
+        extra = request.form.get("extra", "Nenhum")
+        return redirect(f"/agendar?servico={servico}&veiculo={veiculo}&extra={extra}")
 
     return render_template("tipo_veiculo.html", servico=servico)
 
-
-# Página de agendamento (data + hora + extras + total + botão WhatsApp)
+# Página de agendamento
 @app.route("/agendar", methods=["GET"])
 def agendar():
     servico = request.args.get("servico")
     veiculo = request.args.get("veiculo")
     extra = request.args.get("extra", "Nenhum")
 
-    # TABELA DE PREÇOS POR SERVIÇO + VEÍCULO
+    # Preços por tipo de carro
     tabela_precos = {
         "Lavagem De Manutenção": {
             "Hatch": 50,
@@ -74,30 +75,22 @@ def agendar():
             "Caminhonete": 90
         },
         "Moto": {
-            "Moto": 60
+            "Moto": 30
         }
     }
 
-    # PREÇOS DOS EXTRAS
+    preco_servico = tabela_precos.get(servico, {}).get(veiculo, 0)
+
     extras_precos = {
         "Nenhum": 0,
         "Removedor de Piche": 10,
         "Cera Líquida Premium": 50
     }
 
-    # Preço base pelo tipo de serviço + veículo
-    try:
-        preco_servico = tabela_precos[servico][veiculo]
-    except KeyError:
-        preco_servico = 0
-
-    # Preço do extra
     preco_extra = extras_precos.get(extra, 0)
 
-    # Soma total final
     preco_final = preco_servico + preco_extra
 
-    # Dados para o template
     datas = gerar_datas_automaticas()
 
     return render_template(
@@ -110,21 +103,19 @@ def agendar():
         preco_final=preco_final
     )
 
-# API de horários para JS 
+# Horários
 @app.route("/horarios")
 def horarios():
+    from urllib.parse import unquote
     data_escolhida = request.args.get("data")
+
     if not data_escolhida:
         return {"horarios": []}
 
-    from urllib.parse import unquote
     data_escolhida = unquote(data_escolhida)
-
     horarios_disponiveis = gerar_horarios_por_dia(data_escolhida)
 
     return {"horarios": horarios_disponiveis}
 
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
-    

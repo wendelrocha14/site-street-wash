@@ -1,9 +1,10 @@
-/* ======= FONTE E RESET ======= */
+/* ======= FUNDO PADRÃO ======= */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #02121E, #0A3D62, #081F2F);
+    /* Degradê do azul escuro para preto */
+    background: linear-gradient(135deg, #001d3d, #000814);
     color: rgb(255, 255, 255);
 }
 
