@@ -1,50 +1,193 @@
-/* ============================= */
-/*   CARDS ESTILO iPHONE GLASS   */
-/* ============================= */
-
-.cards-servicos {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    padding: 20px;
+/* ======= FONTE E RESET ======= */
+/* ======= FUNDO PADRÃO ======= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    /* Degradê do azul escuro para preto */
+    background: linear-gradient(135deg, #001d3d, #000814);
+    color: rgb(255, 255, 255);
 }
 
-.card {
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 25px;
-    padding: 25px;
-    color: white;
+/* ======= HEADER ======= */
+.header {
+    width: 100%;
+    padding: 20px 40px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+.logo {
+    width: 170px;
+    height: auto;
+    margin-left: 0;
+}
 
+.logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+/* MENU */
+.menu a {
+    margin-left: 30px;
+    color: #E6F7FF;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.menu a:hover {
+    color: #4DD2FF;
+}
+
+/* ======= HERO ======= */
+.hero {
     text-align: center;
-    transition: transform 0.2s ease;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.hero h1 span {
+    color: #4DD2FF;
+}
+
+.hero p {
+    font-size: 18px;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+/* BOTÕES HERO */
+.hero-buttons {
+    margin-top: 40px;
+}
+
+/* ===================== */
+/* BOTÕES ESTILO BOLHA iOS */
+/* ===================== */
+.btn-primary, .btn-outline {
+    border-radius: 50px !important;
+    padding: 16px 28px !important;
+    font-size: 18px;
+    font-weight: 600;
+    backdrop-filter: blur(12px);
+    box-shadow: 
+        4px 4px 12px rgba(0,0,0,0.3),
+        -4px -4px 12px rgba(255,255,255,0.15);
+    transition: 0.25s ease;
+}
+
+/* Botão principal */
+.btn-primary {
+    background: rgba(77,210,255,0.55) !important;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #000;
+}
+
+.btn-primary:hover {
+    transform: scale(1.07);
+    background: rgba(77,210,255,0.75) !important;
+}
+
+/* Botão outline */
+.btn-outline {
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(77,210,255,0.6) !important;
+    color: #4DD2FF;
+}
+
+.btn-outline:hover {
+    transform: scale(1.07);
+    background: rgba(77,210,255,0.15);
+}
+
+/* ============================= */
+/*        SERVIÇOS DA HOME       */
+/* ============================= */
+.servicos-home {
+    padding: 60px 0;
+    background: #000;
+    color: #fff;
+    text-align: center;
+}
+
+.titulo-servicos {
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #4DD2FF;
+}
+
+/* GRID DOS CARDS */
+.cards-servicos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* ===================== */
+/* CARDS GLASSMORPHISM COM BORDA NEON */
+/* ===================== */
+.card {
+    background: rgba(255, 255, 255, 0.1); /* vidro transparente */
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    border: 2px solid rgba(0, 170, 255, 0.6); /* borda azul neon */
+    box-shadow: 0 8px 25px rgba(0, 170, 255, 0.3);
+    transition: 0.3s ease;
+    color: #fff;
+    width: 380px; /* maior */
+    padding: 40px; /* mais espaço interno */
 }
 
 .card:hover {
-    transform: scale(1.03);
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 170, 255, 0.6);
 }
 
+/* ÍCONE */
 .card-icon {
     font-size: 50px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
+/* TÍTULO DO CARD */
 .card h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
+    margin: 10px 0 10px;
+    font-size: 26px;
+    font-weight: bold;
+    color: rgba(77, 210, 255, 0.8);
+    background: rgba(255,255,255,0.05); /* transparente */
+    border-radius: 20px;
+    border: 1px solid rgba(0,170,255,0.7); /* borda neon */
+    padding: 8px 16px;
+    display: inline-block;
+    transition: 0.3s;
 }
 
-.card .preco {
-    font-size: 22px;
+.card h2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 16px rgba(0, 170, 255, 0.7);
+}
+
+/* PREÇO */
+.preco {
+    color: #00aaff;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 15px;
 }
 
-/* Lista */
+/* LISTA */
 .card ul {
     list-style: none;
     padding: 0;
@@ -52,24 +195,68 @@
 }
 
 .card ul li {
-    margin: 6px 0;
+    margin: 8px 0;
+    font-size: 15px;
+    color: #d5e8ff;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 8px;
 }
 
-/* Botão */
+/* CHECK AZUL */
+.card ul li::before {
+    content: "✔";
+    color: #00aaff;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+/* BOTÃO "AGENDAR AGORA" */
 .btn-card {
-    display: inline-block;
-    background: linear-gradient(135deg, #00d4ff, #0088ff);
-    padding: 12px 20px;
-    border-radius: 20px;
-
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
+    display: block;
+    text-align: center;
     font-weight: bold;
-
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    color: rgba(77, 210, 255, 0.9);
+    background: rgba(255,255,255,0.05); /* transparente vidro */
+    border: 1px solid rgba(0,170,255,0.7); /* borda azul neon */
+    border-radius: 30px;
+    padding: 14px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
 }
 
-.btn-card:active {
-    transform: scale(0.95);
+.btn-card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(0, 170, 255, 0.6);
+    background: rgba(255,255,255,0.08);
+}
+
+/* ====== FRASE AO LADO/ABAIXO DA LOGO ====== */
+.top-frase {
+    color: #4DD2FF;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+    text-shadow: 
+        0 0 8px rgba(77,210,255,0.6),
+        0 0 12px rgba(0,150,255,0.4);
+    animation: glowPulse 2.5s infinite alternate;
+}
+
+/* Animação leve de brilho */
+@keyframes glowPulse {
+    0% {
+        text-shadow: 
+            0 0 6px rgba(77,210,255,0.5),
+            0 0 12px rgba(0,150,255,0.3);
+    }
+    100% {
+        text-shadow: 
+            0 0 12px rgba(77,210,255,0.8),
+            0 0 18px rgba(0,150,255,0.5);
+    }
 }

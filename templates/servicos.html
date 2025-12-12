@@ -1,20 +1,67 @@
-<div class="servicos-container">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - StreetWash</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
 
-    <h1>Serviços Disponíveis</h1>
-
-    <div class="servico-item">
-        <a href="/tipo-veiculo?servico=Lavagem De Manutenção">Lavagem De Manutenção</a>
-        <p class="servico-preco">A partir de R$ 60</p>
+<header class="header">
+    <div class="logo-area">
+        <img src="{{ url_for('static', filename='logo.jpeg') }}" class="logo">
+        <h2 class="top-frase">Seu carro limpo no conforto da sua casa.</h2>
     </div>
+</header>
 
-    <div class="servico-item">
-        <a href="/tipo-veiculo?servico=Lavagem Detalhada Premium">Lavagem Detalhada Premium</a>
-        <p class="servico-preco">A partir de R$ 70</p>
+<section class="servicos-home">
+    <h1 class="titulo-servicos">Escolha seu Serviço</h1>
+
+    <div class="cards-servicos">
+        <!-- CARD 1 -->
+        <div class="card">
+            <div class="card-icon">💧</div>
+            <h2>Lavagem De Manutenção</h2>
+            <p class="preco">R$ 50 - 60</p>
+            <ul>
+                <li>✔ Lavagem externa completa</li>
+                <li>✔ Aspiração interna</li>
+                <li>✔ Vidros</li>
+                <li>✔ Pneus brilhante</li>
+            </ul>
+            <a href="/tipo-veiculo?servico=Lavagem De Manutenção" class="btn-card">Escolher</a>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="card">
+            <div class="card-icon">✨</div>
+            <h2>Lavagem Detalhada Premium</h2>
+            <p class="preco">R$ 65 - 90</p>
+            <ul>
+                <li>✔ Lavagem técnica detalhada</li>
+                <li>✔ Pré Higienização</li>
+                <li>✔ Aspiração completa</li>
+                <li>✔ Proteção UV Painel</li>
+                <li>✔ Limpeza detalhada das rodas</li>
+                <li>✔ Vidros e acabamento final</li>
+            </ul>
+            <a href="/tipo-veiculo?servico=Lavagem Detalhada Premium" class="btn-card">Escolher</a>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="card">
+            <div class="card-icon">🏍️</div>
+            <h2>Moto</h2>
+            <p class="preco">R$ 30</p>
+            <ul>
+                <li>✔ Lavagem completa</li>
+                <li>✔ Produtos premium</li>
+            </ul>
+            <a href="/tipo-veiculo?servico=Moto" class="btn-card">Escolher</a>
+        </div>
     </div>
+</section>
 
-    <div class="servico-item">
-        <a href="/agendar?servico=Moto&veiculo=Moto&extra=Nenhum">Moto</a>
-        <p class="servico-preco">A partir de R$ 30</p>
-    </div>
-
-</div>
+</body>
+</html>
