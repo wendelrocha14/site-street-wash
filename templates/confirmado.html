@@ -3,8 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <title>Confirmado</title>
-   <!-- Depois (correto) -->
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #02121E, #0A3D62, #081F2F);
+            font-family: "Poppins", sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* CONTAINER BOLHA VIDRO */
+        .container {
+            width: 95%;
+            max-width: 500px;
+
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(14px);
+
+            padding: 30px;
+            border-radius: 25px;
+
+            border: 1px solid rgba(0, 170, 255, 0.45);
+            box-shadow:
+                0 0 18px rgba(0,170,255,0.25),
+                0 0 35px rgba(0,170,255,0.15);
+
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 28px;
+            color: #4DD2FF;
+            text-shadow: 0 0 12px rgba(77,210,255,0.7);
+            margin-bottom: 25px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #d9f2ff;
+        }
+
+        p strong {
+            color: #00c3ff;
+            text-shadow: 0 0 8px rgba(0,170,255,0.6);
+        }
+
+        /* BOTÃO */
+        .btn {
+            display: block;
+            margin-top: 30px;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: bold;
+
+            background: rgba(0,210,255,0.45);
+            color: #000;
+
+            text-decoration: none;
+            border-radius: 50px;
+
+            border: 1px solid rgba(0,210,255,0.6);
+            box-shadow:
+                0 0 15px rgba(0,210,255,0.5),
+                0 0 25px rgba(0,210,255,0.35);
+
+            transition: 0.3s ease;
+            backdrop-filter: blur(6px);
+        }
+
+        .btn:hover {
+            background: rgba(0,210,255,0.7);
+            box-shadow:
+                0 0 20px rgba(0,210,255,0.8),
+                0 0 35px rgba(0,210,255,0.55);
+            transform: scale(1.03);
+        }
+    </style>
 
 </head>
 <body>

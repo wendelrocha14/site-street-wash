@@ -1,262 +1,129 @@
-/* ======= FONTE E RESET ======= */
-/* ======= FUNDO PADRÃO ======= */
+/* ======== FUNDO GERAL COM EFEITO PREMIUM ======== */
 body {
+    background: linear-gradient(145deg, #00182e, #003d64);
+    background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    /* Degradê do azul escuro para preto */
-    background: linear-gradient(135deg, #001d3d, #000814);
-    color: rgb(255, 255, 255);
 }
 
-/* ======= HEADER ======= */
-.header {
-    width: 100%;
-    padding: 20px 40px;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    width: 170px;
-    height: auto;
-    margin-left: 0;
-}
-
-.logo-area {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-}
-
-/* MENU */
-.menu a {
-    margin-left: 30px;
-    color: #E6F7FF;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.menu a:hover {
-    color: #4DD2FF;
-}
-
-/* ======= HERO ======= */
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.hero h1 {
-    font-size: 48px;
-    font-weight: bold;
-}
-
-.hero h1 span {
-    color: #4DD2FF;
-}
-
-.hero p {
-    font-size: 18px;
-    opacity: 0.8;
-    margin-top: 10px;
-}
-
-/* BOTÕES HERO */
-.hero-buttons {
-    margin-top: 40px;
-}
-
-/* ===================== */
-/* BOTÕES ESTILO BOLHA iOS */
-/* ===================== */
-.btn-primary, .btn-outline {
-    border-radius: 50px !important;
-    padding: 16px 28px !important;
-    font-size: 18px;
-    font-weight: 600;
-    backdrop-filter: blur(12px);
-    box-shadow: 
-        4px 4px 12px rgba(0,0,0,0.3),
-        -4px -4px 12px rgba(255,255,255,0.15);
+/* ======== BASE PARA TODOS OS CARDS EM ESTILO BOLHA ======== */
+.bubble-card {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 25px;
+    padding: 22px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(80, 180, 255, 0.5);
+    box-shadow: 0 0 30px rgba(80, 180, 255, 0.28);
     transition: 0.25s ease;
 }
 
-/* Botão principal */
-.btn-primary {
-    background: rgba(77,210,255,0.55) !important;
-    border: 1px solid rgba(255,255,255,0.25);
-    color: #000;
+.bubble-card:hover {
+    box-shadow: 0 0 40px rgba(80, 180, 255, 0.55);
+    transform: translateY(-3px);
 }
 
-.btn-primary:hover {
-    transform: scale(1.07);
-    background: rgba(77,210,255,0.75) !important;
-}
-
-/* Botão outline */
-.btn-outline {
-    background: rgba(255,255,255,0.05);
-    border: 2px solid rgba(77,210,255,0.6) !important;
-    color: #4DD2FF;
-}
-
-.btn-outline:hover {
-    transform: scale(1.07);
-    background: rgba(77,210,255,0.15);
-}
-
-/* ============================= */
-/*        SERVIÇOS DA HOME       */
-/* ============================= */
-.servicos-home {
-    padding: 60px 0;
-    background: #000;
-    color: #fff;
+/* ======== TÍTULO PADRÃO EM ESTILO BOLHA ======== */
+.bubble-title {
+    font-size: 28px;
+    font-weight: 700;
     text-align: center;
+    background: linear-gradient(90deg, #bfe7ff, #87ccff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 25px;
+    text-shadow: 0 0 12px rgba(150, 220, 255, 0.35);
 }
 
-.titulo-servicos {
-    font-size: 42px;
-    font-weight: bold;
-    margin-bottom: 40px;
-    color: #4DD2FF;
-}
-
-/* GRID DOS CARDS */
-.cards-servicos {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-/* ===================== */
-/* CARDS GLASSMORPHISM COM BORDA NEON */
-/* ===================== */
-.card {
-    background: rgba(255, 255, 255, 0.1); /* vidro transparente */
-    backdrop-filter: blur(15px);
-    border-radius: 25px;
-    border: 2px solid rgba(0, 170, 255, 0.6); /* borda azul neon */
-    box-shadow: 0 8px 25px rgba(0, 170, 255, 0.3);
-    transition: 0.3s ease;
-    color: #fff;
-    width: 380px; /* maior */
-    padding: 40px; /* mais espaço interno */
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 30px rgba(0, 170, 255, 0.6);
-}
-
-/* ÍCONE */
-.card-icon {
-    font-size: 50px;
-    margin-bottom: 15px;
-}
-
-/* TÍTULO DO CARD */
-.card h2 {
-    margin: 10px 0 10px;
-    font-size: 26px;
-    font-weight: bold;
-    color: rgba(77, 210, 255, 0.8);
-    background: rgba(255,255,255,0.05); /* transparente */
-    border-radius: 20px;
-    border: 1px solid rgba(0,170,255,0.7); /* borda neon */
-    padding: 8px 16px;
-    display: inline-block;
-    transition: 0.3s;
-}
-
-.card h2:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 16px rgba(0, 170, 255, 0.7);
-}
-
-/* PREÇO */
-.preco {
-    color: #00aaff;
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-/* LISTA */
-.card ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
-}
-
-.card ul li {
-    margin: 8px 0;
-    font-size: 15px;
-    color: #d5e8ff;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding-bottom: 8px;
-}
-
-/* CHECK AZUL */
-.card ul li::before {
-    content: "✔";
-    color: #00aaff;
-    margin-right: 10px;
-    font-size: 16px;
-}
-
-/* BOTÃO "AGENDAR AGORA" */
-.btn-card {
-    display: block;
-    text-align: center;
-    font-weight: bold;
-    color: rgba(77, 210, 255, 0.9);
-    background: rgba(255,255,255,0.05); /* transparente vidro */
-    border: 1px solid rgba(0,170,255,0.7); /* borda azul neon */
-    border-radius: 30px;
+/* ======== BOTÃO ESTILO BOLHA ======== */
+.bubble-button {
+    width: 100%;
+    border-radius: 32px;
     padding: 14px;
-    font-size: 18px;
-    text-decoration: none;
-    transition: 0.3s ease;
-    box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
-}
-
-.btn-card:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 25px rgba(0, 170, 255, 0.6);
-    background: rgba(255,255,255,0.08);
-}
-
-/* ====== FRASE AO LADO/ABAIXO DA LOGO ====== */
-.top-frase {
-    color: #4DD2FF;
-    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: #fff;
     font-weight: 600;
-    margin-top: 8px;
-    letter-spacing: 0.5px;
-    text-shadow: 
-        0 0 8px rgba(77,210,255,0.6),
-        0 0 12px rgba(0,150,255,0.4);
-    animation: glowPulse 2.5s infinite alternate;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid rgba(100, 200, 255, 0.55);
+    box-shadow: 0 0 20px rgba(100, 200, 255, 0.40);
+    transition: 0.25s;
 }
 
-/* Animação leve de brilho */
-@keyframes glowPulse {
-    0% {
-        text-shadow: 
-            0 0 6px rgba(77,210,255,0.5),
-            0 0 12px rgba(0,150,255,0.3);
-    }
-    100% {
-        text-shadow: 
-            0 0 12px rgba(77,210,255,0.8),
-            0 0 18px rgba(0,150,255,0.5);
-    }
+.bubble-button:hover {
+    box-shadow: 0 0 30px rgba(100, 200, 255, 0.75);
+    transform: scale(1.04);
+}
+
+/* ======== INPUT / SELECT BOLHA ======== */
+.bubble-input, .bubble-select {
+    width: 100%;
+    border-radius: 20px;
+    padding: 12px;
+    margin-top: 6px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(120, 200, 255, 0.45);
+    color: #fff;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 0 18px rgba(120, 200, 255, 0.30);
+    font-size: 15px;
+}
+
+.bubble-input::placeholder {
+    color: #d8eaff;
+}
+
+.bubble-select option {
+    background: #0a1b2e;
+    color: #fff;
+}
+
+/* ======== OPÇÕES EM FORMA DE BOLHAS (tipo de veículo, serviço etc) ======== */
+.option-bubble {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 14px;
+    border-radius: 22px;
+    border: 1px solid rgba(90, 180, 255, 0.50);
+    box-shadow: 0 0 22px rgba(90, 180, 255, 0.40);
+    color: #fff;
+    cursor: pointer;
+    transition: 0.25s;
+    text-align: center;
+    font-size: 17px;
+}
+
+.option-bubble:hover {
+    box-shadow: 0 0 35px rgba(90, 180, 255, 0.80);
+    transform: scale(1.05);
+}
+
+/* ======== CARD DE RESUMO / CONFIRMAÇÃO ======== */
+.summary-bubble {
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(100, 200, 255, 0.45);
+    border-radius: 25px;
+    padding: 25px;
+    color: #fff;
+    box-shadow: 0 0 30px rgba(100, 200, 255, 0.35);
+}
+
+/* ======== ESTILOS DE LINKS ======== */
+a {
+    color: #9ed7ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #c4ecff;
+    text-shadow: 0 0 10px #c4ecff;
 }
