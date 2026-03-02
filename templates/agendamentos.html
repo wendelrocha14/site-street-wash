@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -109,84 +110,97 @@
         }
     </style>
 
-    <script>
-        function carregarHorarios() {
-            const dataSelecionada = document.getElementById("data").value;
-            if (!dataSelecionada) return;
+   <script>
+    function carregarHorarios() {
+        const dataSelecionada = document.getElementById("data").value;
+        if (!dataSelecionada) return;
 
-            fetch(`/horarios?data=${dataSelecionada}`)
-                .then(res => res.json())
-                .then(json => {
-                    const horarios = json.horarios;
-                    let select = document.getElementById("horario");
-                    select.innerHTML = "";
+        fetch(`/horarios?data=${dataSelecionada}`)
+            .then(res => res.json())
+            .then(json => {
+                const horarios = json.horarios;
+                let select = document.getElementById("horario");
+                select.innerHTML = "";
 
-                    horarios.forEach(h => {
-                        let opt = document.createElement("option");
-                        opt.value = h;
-                        opt.innerHTML = h;
-                        select.appendChild(opt);
-                    });
+                if (horarios.length === 0) {
+                    let opt = document.createElement("option");
+                    opt.text = "Sem horários disponíveis";
+                    select.appendChild(opt);
+                    return;
+                }
+
+                horarios.forEach(h => {
+                    let opt = document.createElement("option");
+                    opt.value = h;
+                    opt.innerHTML = h;
+                    select.appendChild(opt);
                 });
+            });
+    }
+
+    function atualizarTotal() {
+        const base = Number("{{ preco_base }}") || 0;
+        const extraValor = Number(document.getElementById("extra").value) || 0;
+        const total = base + extraValor;
+
+        document.getElementById("total-final").innerHTML =
+            total.toFixed(2).replace(".", ",");
+    }
+
+    function enviarWhatsApp() {
+        const servico = "{{ servico }}";
+        const veiculo = "{{ veiculo }}";
+
+        const base = Number("{{ preco_base }}") || 0;
+        const extraSelect = document.getElementById("extra");
+        const extraTxt = extraSelect.selectedOptions[0].text;
+        const extraValor = Number(extraSelect.value) || 0;
+
+        const total = base + extraValor;
+
+        const data = document.getElementById("data").value;
+        const horario = document.getElementById("horario").value;
+
+        if (!data || !horario) {
+            alert("Selecione data e horário antes de confirmar.");
+            return;
         }
 
-        function atualizarTotal() {
-            const base = parseFloat("{{ preco_base }}");
-            const extra = parseFloat(document.getElementById("extra").value);
-            const total = base + extra;
+        const msg =
+            `Olá! Quero confirmar um agendamento:%0A` +
+            `• Serviço: ${servico}%0A` +
+            `• Veículo: ${veiculo}%0A` +
+            `• Extra: ${extraTxt}%0A` +
+            `• Total: R$ ${total.toFixed(2)}%0A` +
+            `• Data: ${data}%0A` +
+            `• Horário: ${horario}`;
 
-            document.getElementById("total-final").innerHTML = total.toFixed(2).replace(".", ",");
-        }
+        const link = `https://wa.me/5551999522076?text=${msg}`;
+        window.location.href = link;
+    }
+</script>
 
-        function enviarWhatsApp() {
-            const servico = "{{ servico }}";
-            const veiculo = "{{ veiculo }}";
-            const base = parseFloat("{{ preco_base }}");
-            const extraTxt = document.getElementById("extra").selectedOptions[0].text;
-            const extraValor = parseFloat(document.getElementById("extra").value);
-            const total = base + extraValor;
-
-            const data = document.getElementById("data").value;
-            const horario = document.getElementById("horario").value;
-
-            const msg = 
-                `Olá! Quero confirmar um agendamento:%0A` +
-                `• Serviço: ${servico}%0A` +
-                `• Veículo: ${veiculo}%0A` +
-                `• Extra: ${extraTxt}%0A` +
-                `• Total: R$ ${total.toFixed(2)}%0A` +
-                `• Data: ${data}%0A` +
-                `• Horário: ${horario}`;
-
-            const link = `https://wa.me/5551999522076?text=${msg}`;
-            window.location.href = link;
-        }
-    </script>
 </head>
-
 <body>
 
 <div class="card">
-    <h1>Finalizar Agendamento</h1>
+
+    <h1>Confirmar Agendamento</h1>
 
     <div class="info">
-        <p><b>Serviço:</b> {{ servico }}</p>
-        <p><b>Veículo:</b> {{ veiculo }}</p>
-        <p><b>Preço Base:</b> R$ {{ preco_base }}</p>
+        <p><strong>Serviço:</strong> {{ servico }}</p>
+        <p><strong>Veículo:</strong> {{ veiculo }}</p>
+        <p><strong>Preço Base:</strong> R$ {{ preco_base }}</p>
     </div>
 
-    <label class="label">Serviço Extra:</label>
+    <label class="label">Escolha um adicional:</label>
     <select id="extra" onchange="atualizarTotal()">
-        <option value="0">Nenhum extra</option>
-        <option value="10">Removedor de piche - R$10,00</option>
-        <option value="50">Cera Premium - R$50,00</option>
+        <option value="0">Nenhum - R$ 0</option>
+        <option value="10">Removedor de Piche - R$ 10</option>
+        <option value="50">Cera Líquida Premium - R$ 50</option>
     </select>
 
-    <div class="total-box">
-        <b>Total:</b> R$ <span id="total-final">{{ preco_base }}</span>
-    </div>
-
-    <label class="label">Escolha a Data:</label>
+    <label class="label">Escolha a data:</label>
     <select id="data" onchange="carregarHorarios()">
         <option value="">Selecione...</option>
         {% for d in datas %}
@@ -194,14 +208,21 @@
         {% endfor %}
     </select>
 
-    <label class="label">Selecione o Horário:</label>
+    <label class="label">Escolha o horário:</label>
     <select id="horario">
-        <option>Selecione uma data primeiro...</option>
+        <option value="">Selecione uma data primeiro</option>
     </select>
 
-    <button class="btn-whatsapp" onclick="enviarWhatsApp()">Confirmar no WhatsApp</button>
+    <div class="total-box">
+        <p>Total: R$ <strong id="total-final">{{ preco_base }}</strong></p>
+    </div>
 
-    <a class="btn-voltar" href="/servicos">⬅ Voltar</a>
+    <button class="btn-whatsapp" onclick="enviarWhatsApp()">
+        Confirmar via WhatsApp
+    </button>
+
+    <a href="/servicos" class="btn-voltar">⬅ Voltar</a>
+
 </div>
 
 </body>

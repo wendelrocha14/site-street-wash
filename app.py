@@ -98,9 +98,7 @@ def tipo_veiculo():
     # Se usuário clicou em continuar
     if request.method == "POST":
         veiculo = request.form.get("veiculo")
-        extra = request.form.get("extra", "Nenhum")
-        return redirect(f"/agendar?servico={servico}&veiculo={veiculo}&extra={extra}")
-
+        return redirect(f"/agendar?servico={servico}&veiculo={veiculo}")
     return render_template("tipo_veiculo.html", servico=servico)
 
 
@@ -108,38 +106,37 @@ def tipo_veiculo():
 # 4. TELA FINAL (VALOR TOTAL)
 # ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-@app.route("/agendar", methods=["GET"])
-def agendar():
 
-    servico_raw = request.args.get("servico", "")
+@app.route("/agendar")
+def agendar():
+    servico_raw = request.args.get("servico")
+    veiculo = request.args.get("veiculo")
+
+    if not servico_raw or not veiculo:
+        return "Serviço ou veículo não selecionado"
+
     servico = normalizar_servico(servico_raw)
 
-    veiculo = request.args.get("veiculo", "")
-    extra = request.args.get("extra", "Nenhum")
+    # Buscar preço correto da tabela principal
+    preco_base = PRECOS_VEICULOS.get(servico, {}).get(veiculo)
 
-    # Preço base (conforme serviço e veículo)
-    preco_servico = PRECOS_VEICULOS.get(servico, {}).get(veiculo, 0)
+    if preco_base is None:
+        return "Preço não encontrado"
 
-    # Preço do extra
-    preco_extra = PRECOS_EXTRAS.get(extra, 0)
-
-    # Soma total
-    preco_total = preco_servico + preco_extra
-
-    # Datas disponíveis
-    datas = gerar_datas_automaticas()
+    datas = [
+        "26/02/2026",
+        "27/02/2026",
+        "28/02/2026",
+        "01/03/2026"
+    ]
 
     return render_template(
         "agendamentos.html",
         servico=servico,
         veiculo=veiculo,
-        extra_nome=extra,
-        extra_valor=preco_extra,
-        preco_final=preco_total,
+        preco_base=preco_base,
         datas=datas
     )
-
-
 # ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 # 5. HORÁRIOS
 # ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬

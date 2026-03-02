@@ -101,7 +101,7 @@
 
     <h1>Escolha o Tipo de Veículo</h1>
 
-    <form action="/agendar" method="GET">
+    <form action="/tipo-veiculo?servico={{ servico }}" method="POST">
         <input type="hidden" name="servico" value="{{ servico }}">
 
         <!-- TIPOS DE VEÍCULO -->
@@ -127,27 +127,8 @@
             <input type="radio" name="veiculo" value="Caminhonete" required>
         </label>
 
-        <hr style="border-color: rgba(0,170,255,0.2); margin:20px 0;">
-
-        <!-- SERVIÇOS EXTRAS -->
-        <p class="section-title">Serviços Extras (opcional):</p>
-
-        <label class="item">
-            Removedor de Piche — R$ 10
-            <input type="radio" name="extra" value="Removedor de Piche">
-        </label>
-
-        <label class="item">
-            Cera Líquida Premium — R$ 50
-            <input type="radio" name="extra" value="Cera Líquida Premium">
-        </label>
-
-        <label class="item">
-            Nenhum extra
-            <input type="radio" name="extra" value="Nenhum" checked>
-        </label>
-
-        <button class="btn" type="submit">Continuar</button>
+       
+         <button class="btn" type="submit">Continuar</button>
 
     </form>
 
@@ -157,3 +138,4 @@
 
 </body>
 </html>
+    
